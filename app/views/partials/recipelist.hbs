@@ -1,0 +1,25 @@
+<section class="ui raised segment">
+    <div class="ui grid">
+        <article>
+            <table class="ui celled table segment">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th class="six wide">Description</th>
+                    <th>Member</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {{#each recipes}}
+                    <tr>
+                        <td> {{name}} </td>
+                        <td> {{description}} </td>
+                        <td> {{memeber.firstName}} {{member.lastName}} </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </article>
+    </div>
+
+</section>
