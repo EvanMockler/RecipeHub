@@ -2,7 +2,7 @@
     <div class="ui grid ">
         <div class="ui form six wide column">
             <div class="ui stacked segment">
-                <form  action="/addRecipe" method="POST">
+                <form  action="/addRecipe" method="POST" enctype="multipart/form-data">
                     <div class="field">
                         <label>Recipe Name</label>
                         <input type="text" name="name">
@@ -10,6 +10,25 @@
                     <div class="field">
                         <label>Description</label>
                         <textarea  name="description"></textarea>
+                    </div>
+
+                    <div class="grouped inline fields">
+                        <h3> Select Dietary Restrictions </h3>
+                        {{#each diets }}
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="diet" value="{{name}}">
+                                    <label>{{name}}</label>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">Select Image</label>
+                        <div class="uk-form-controls">
+                            <input type="file" class="uk-input" name="imagefile" accept="image/png, image/jpeg">
+                        </div>
                     </div>
                     <button class="ui blue submit button">Add</button>
                 </form>

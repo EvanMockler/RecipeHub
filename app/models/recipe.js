@@ -9,6 +9,11 @@ const recipeSchema = new Schema({
     member: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    image: String,
+    diet: {
+        type: Schema.Types.ObjectId,
+        ref: 'Diet',
     }
 });
 

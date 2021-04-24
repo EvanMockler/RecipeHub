@@ -1,0 +1,30 @@
+{
+  "users": {
+    "_model": "User",
+    "homer": {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret"
+    }
+  },
+  "diets": {
+    "_model": "Diet",
+    "vegan": {
+      "name": "Vegan"
+    },
+    "gluten free": {
+      "name": "Gluten Free"
+    }
+  },
+  "recipes": {
+    "_model": "Recipe",
+    "one": {
+      "name": "Gruel",
+      "description": "1. Get Leftovers. 2. Blend it up",
+      "member": "->users.homer",
+      "image": "http://res.cloudinary.com/dboqg9n9q/image/upload/v1619258404/b0i5qaadq26jojzo1fxf.jpg",
+      "diet": "->diets.vegan"
+    }
+  }
+}

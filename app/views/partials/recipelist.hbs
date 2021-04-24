@@ -7,6 +7,8 @@
                     <th>Name</th>
                     <th class="six wide">Description</th>
                     <th>Member</th>
+                    <th>Diet</th>
+                    <th>Image</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -14,7 +16,9 @@
                     <tr>
                         <td> {{name}} </td>
                         <td> {{description}} </td>
-                        <td> {{memeber.firstName}} {{member.lastName}} </td>
+                        <td> {{member.firstName}} {{member.lastName}} </td>
+                        <td> {{diet.name}} </td>
+                        <td><img class="ui large image" src="{{image}}"></td>
                     </tr>
                     {{/each}}
                 </tbody>
