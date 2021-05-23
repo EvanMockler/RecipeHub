@@ -1,0 +1,55 @@
+{{> mainmenu _id="report"}}
+<section class="ui raised segment">
+    <h1 class="ui block header" style="color: white; background-color: darkmagenta">
+        <div style="text-align: center">
+        <i class="utensils pink icon"></i>
+        <div class="content">
+            {{recipe.name}}
+        </div>
+        <i class="utensils spoon pink right aligned icon"></i>
+        </div>
+    </h1>
+
+
+    <div class="ui segment">
+        <div class="ui two column very relaxed divided grid">
+            <div class="column">
+                <img class="ui fluid bordered image" src="{{recipe.image}}">
+            </div>
+            <div class="column">
+
+                {{#each recipe.ingredients}}
+                <ul class="ui list">
+                <ul>
+                    <li>{{amount}} {{unit}} of {{name}}</li>
+                </ul>
+                </ul>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <div class="ui segment">
+    <div style="white-space: pre-wrap">
+    {{recipe.description}}
+    </div>
+    </div>
+
+
+    <div class="ui segment">
+    <div class="ui two column grid">
+        <div class="column">
+            <a href="/editrecipe/{{recipe._id}}"><button class="ui button">Edit</button></a>
+            <a href="/deleterecipe/{{recipe._id}}"><button class="ui button">Delete</button></a>
+        </div>
+
+        <div class="column" style="text-align: end">
+            submitted by
+            <h3 class="ui right floated violet header">
+            {{recipe.member.firstName}} {{recipe.member.lastName}}
+            </h3>
+        </div>
+    </div>
+    </div>
+
+</section>

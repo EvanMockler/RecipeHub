@@ -1,17 +1,17 @@
 <section class="ui raised segment">
     <div class="ui grid ">
-        <div class="ui form six wide column">
+        <div class="ui form six wide column" style="background-color: darkmagenta">
             <div class="ui stacked segment">
                 <form  action="/addRecipe" method="POST" enctype="multipart/form-data">
                     <div class="field">
                         <label>Recipe Name</label>
                         <input type="text" name="name">
                     </div>
+                    {{>enteringredients}}
                     <div class="field">
                         <label>Description</label>
                         <textarea  name="description"></textarea>
                     </div>
-
                     <div class="grouped inline fields">
                         <h3> Select Dietary Restrictions </h3>
                         {{#each diets }}
@@ -30,12 +30,29 @@
                             <input type="file" class="uk-input" name="imagefile" accept="image/png, image/jpeg">
                         </div>
                     </div>
-                    <button class="ui blue submit button">Add</button>
+                    <br>
+                    <br>
+                    <br>
+                    <button class="ui violet submit button">Add</button>
+
                 </form>
             </div>
         </div>
-        <aside class="eight wide column">
-            <img src="images/al.png" class="ui fluid image">
+        <aside class="ten wide column"style="background-color: darkmagenta">
+            <img src="images/al.png" class="ui fluid rounded bordered image">
+            <br>
+            <img src="images/arepa.png" class="ui fluid rounded bordered image">
+            <br>
+            <div class="ui two column grid ">
+                <div class="column">
+                    <img src="/images/olives.png" class="ui fluid rounded bordered image">
+                    <img src="/images/scallops.png" class="ui fluid rounded bordered image">
+                </div>
+                <div class="column">
+                    <img src="/images/hummus.png" class="ui fluid rounded bordered image">
+                    <img src="/images/nuts.png" class="ui fluid rounded bordered image">
+                </div>
+            </div>
         </aside>
     </div>
 </section>

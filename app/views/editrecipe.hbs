@@ -1,0 +1,37 @@
+{{> mainmenu _id="editrecipe"}}
+
+<section class="ui raised segment">
+    <div class="ui celled form segment">
+        <form action="/updateRecipe/{{recipe._id}}" method="POST">
+            <div class="field">
+                <label>Name</label> <input value="{{recipe.name}}" type="text" name="name">
+            </div>
+
+            <img class="ui large image" src="{{recipe.image}}">
+            {{recipe.member.firstName}} {{recipe.member.lastName}}
+            {{>editingredients}}
+            <div class="field" style="padding-top: 30px" >
+                <label>Description</label>
+                <textarea class="form-control" rows="40" name="description">{{recipe.description}}</textarea>
+            </div>
+
+            <div class="grouped inline fields">
+                <h3> Select Diet </h3>
+                {{#each diets }}
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="diet" value="{{name}}">
+                            <label>{{name}}</label>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+            <button class="ui blue submit button">Update</button>
+        </form>
+        {{> error }}
+    </div>
+</section>
+
+<script>
+    $("input[name='diet'][value='{{recipe.diet.name}}']").prop("checked",true);
+</script>

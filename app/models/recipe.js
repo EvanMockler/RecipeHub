@@ -14,7 +14,11 @@ const recipeSchema = new Schema({
     diet: {
         type: Schema.Types.ObjectId,
         ref: 'Diet',
-    }
+    },
+    ingredients: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Ingredient',
+    }]
 });
 
 module.exports = Mongoose.model('Recipe', recipeSchema);

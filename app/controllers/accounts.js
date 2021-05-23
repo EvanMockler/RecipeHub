@@ -3,6 +3,8 @@
 const User = require('../models/user');
 const Boom = require('@hapi/boom');
 const Joi = require('@hapi/joi');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const Accounts = {
     index: {
@@ -21,12 +23,12 @@ const Accounts = {
         auth: false,
         validate: {
             payload: {
-                firstName: Joi.string().required(),
-                lastName: Joi.string().required(),
-                email: Joi.string()
+                firstName: Joi.string().regex(/^[A-Z][a-z-']{0,12}$/).message("Max 13 characters for First Name field (Letters, numbers, apostrophes & hyphens valid)"), // Names up to 13 characters allowed, hyphen and apostrophe
+                lastName: Joi.string().regex(/^[A-Z][a-z-']{0,16}$/).message("Max 17 characters for Last Name field(Letters, numbers, apostrophes,Hyphens valid"), // Names up to 17 characters allowed, hyphen and apostrophe
+                email: Joi.string().regex(/^\S+@\S+.+[A-Za-z]$/).message("Valid email must contain @ character")
                     .email()
                     .required(),
-                password: Joi.string().required()
+                password: Joi.string().regex(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$/).message("Password must be over 8 characters. It must contain at least 1 Uppercase, 1 Lowercase and a number"), //password must be over 8 characters and an uppercase & lowercase letter, a number
             },
             options: {
                 abortEarly: false,
@@ -49,11 +51,14 @@ const Accounts = {
                     const message = 'Email address is already registered';
                     throw Boom.badData(message);
                 }
+
+                const hash = await bcrypt.hash(payload.password, saltRounds);
+
                 const newUser = new User({
                     firstName: payload.firstName,
                     lastName: payload.lastName,
                     email: payload.email,
-                    password: payload.password
+                    password: hash
                 });
                 user = await newUser.save();
                 request.cookieAuth.set({ id: user.id });
@@ -99,9 +104,13 @@ const Accounts = {
                     const message = 'Email address is not registered';
                     throw Boom.unauthorized(message);
                 }
-                user.comparePassword(password);
-                request.cookieAuth.set({ id: user.id });
-                return h.redirect('/home');
+                if (!await user.comparePassword(password)) {
+                    const message = 'Password mismatch';
+                    throw Boom.unauthorized(message);
+                } else {
+                    request.cookieAuth.set({ id: user.id });
+                    return h.redirect('/home');
+                }
             } catch (err) {
                 return h.view('login', { errors: [{ message: err.message }] });
             }
@@ -132,12 +141,12 @@ const Accounts = {
     updateSettings: {
         validate: {
             payload: {
-                firstName: Joi.string().required(),
-                lastName: Joi.string().required(),
+                firstName: Joi.string().required().regex(/^[A-Z][a-z-']{0,12}$/).message("Max 13 characters for First Name field (Letters, numbers, apostrophes & hyphens valid)"),
+                lastName: Joi.string().required().regex(/^[A-Z][a-z-']{0,16}$/).message("Max 17 characters for Last Name field(Letters, numbers, apostrophes,Hyphens valid"),
                 email: Joi.string()
                     .email()
-                    .required(),
-                password: Joi.string().required()
+                    .required().regex(/^\S+@\S+.+[A-Za-z]$/).message("Valid email must contain @ character"),
+                password: Joi.string().regex(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$/).message("Password must be over 8 characters. It must contain at least 1 Uppercase, 1 Lowercase and a number")
             },
             options: {
                 abortEarly: false

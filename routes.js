@@ -16,6 +16,10 @@ module.exports = [
     { method: 'GET', path: '/home', config: Recipes.home },
     { method: 'GET', path: '/report', config: Recipes.report },
     { method: 'POST', path: '/addRecipe', config: Recipes.addRecipe },
+    { method: 'GET', path: '/recipe/{id}', config: Recipes.viewRecipe },
+    { method: 'GET', path: '/editrecipe/{id}', config: Recipes.editRecipe },
+    { method: 'POST', path: '/updateRecipe/{id}', config: Recipes.updateRecipe },
+    { method: 'GET', path: '/deleterecipe/{id}', config: Recipes.deleteRecipe },
 
     {
         method: 'GET',

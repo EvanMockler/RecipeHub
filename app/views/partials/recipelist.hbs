@@ -1,24 +1,26 @@
 <section class="ui raised segment">
     <div class="ui grid">
-        <article>
-            <table class="ui celled table segment">
-                <thead>
+        <article class="ui twenty wide column">
+            <table class="ui fixed celled structured table" style="vertical-align: top">
+                <thead class="full-width">
                 <tr>
-                    <th>Name</th>
-                    <th class="six wide">Description</th>
-                    <th>Member</th>
-                    <th>Diet</th>
-                    <th>Image</th>
+                    <th colspan="1" style="color: white; background-color: darkmagenta">Name</th>
+                    <th colspan="4" style="color: white; background-color: darkmagenta">Description</th>
+                    <th colspan="1" style="color: white; background-color: darkmagenta">Member</th>
+                    <th colspan="1" style="color: white; background-color: darkmagenta">Diet</th>
+                    <th colspan="1" style="color: white; background-color: darkmagenta">Image</th>
+                    <th style="color: white; background-color: darkmagenta">View</th>
                 </tr>
                 </thead>
                 <tbody>
                     {{#each recipes}}
                     <tr>
-                        <td> {{name}} </td>
-                        <td> {{description}} </td>
-                        <td> {{member.firstName}} {{member.lastName}} </td>
-                        <td> {{diet.name}} </td>
-                        <td><img class="ui large image" src="{{image}}"></td>
+                        <td><b>{{name}}</b> </td>
+                        <td colspan="4"> <div style="white-space: pre-wrap">{{description}}</div> </td>
+                        <td> <b>{{member.firstName}} {{member.lastName}}</b> </td>
+                        <td> <b>{{diet.name}}</b> </td>
+                        <td><img class="ui large bordered image" src="{{image}}"></td>
+                        <td><a href="/recipe/{{_id}}" class="ui violet icon button"><i class="folder open icon"></i></a></td>
                     </tr>
                     {{/each}}
                 </tbody>

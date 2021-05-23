@@ -10,8 +10,17 @@
   },
   "diets": {
     "_model": "Diet",
+    "non diet": {
+      "name": "Non Diet"
+    },
+    "vegetarian": {
+      "name": "Vegetarian"
+    },
     "vegan": {
       "name": "Vegan"
+    },
+    "pescatarian": {
+      "name": "Pescatarian"
     },
     "gluten free": {
       "name": "Gluten Free"
@@ -20,11 +29,11 @@
   "recipes": {
     "_model": "Recipe",
     "one": {
-      "name": "Gruel",
-      "description": "1. Get Leftovers. 2. Blend it up",
+      "name": "Pasta Carbonara",
+      "description": "STEP 1\nPut a large saucepan of water on to boil.\n\nSTEP 2\nFinely chop the 100g pancetta, having first removed any rind.\nFinely grate 50g pecorino cheese and 50g parmesan and mix them together.\n\nSTEP 3\nBeat the 3 large eggs in a medium bowl and season with a little freshly grated black pepper.\n Set everything aside.\n\nSTEP 4\nAdd 1 tsp salt to the boiling water.\n Add 350g spaghetti and when the water comes back to the boil, cook at a constant simmer, covered, for 10 minutes or until al dente (just cooked).\n\nSTEP 5\nSquash 2 peeled plump garlic cloves with the blade of a knife, just to bruise it.\n\nSTEP 6\nWhile the spaghetti is cooking, fry the pancetta with the garlic.\n Drop 50g unsalted butter into a large frying pan or wok and, as soon as the butter has melted, tip in the pancetta and garlic.\n\nSTEP 7\nLeave to cook on a medium heat for about 5 minutes, stirring often, until the pancetta is golden and crisp.\n The garlic has now imparted its flavour, so take it out with a slotted spoon and discard.\n\nSTEP 8\nKeep the heat under the pancetta on low. When the pasta is ready, lift it from the water with a pasta fork or tongs and put it in the frying pan with the pancetta.\n Don’t worry if a little water drops in the pan as well (you want this to happen) and don’t throw the pasta water away yet.\n\nSTEP 9\nMix most of the cheese in with the eggs, keeping a small handful back for sprinkling over later.\n\nSTEP 10\nTake the pan of spaghetti and pancetta off the heat. Now quickly pour in the eggs and cheese.\n Using the tongs or a long fork, lift up the spaghetti so it mixes easily with the egg mixture, which thickens but doesn’t scramble, and everything is coated.\n\nSTEP 11\nAdd extra pasta cooking water to keep it saucy (several tablespoons should do it).\n You don’t want it wet, just moist. Season with a little salt, if needed.\n\nSTEP 12\nUse a long-pronged fork to twist the pasta on to the serving plate or bowl.\n Serve immediately with a little sprinkling of the remaining cheese and a grating of black pepper.\n If the dish does get a little dry before serving, splash in some more hot pasta water and the glossy sauciness will be revived.",
       "member": "->users.homer",
       "image": "http://res.cloudinary.com/dboqg9n9q/image/upload/v1619258404/b0i5qaadq26jojzo1fxf.jpg",
-      "diet": "->diets.vegan"
+      "diet": "->diets.gluten free"
     }
   }
 }
